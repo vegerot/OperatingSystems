@@ -1,0 +1,5 @@
+b:
+printf2: x=0
+b:
+printf1: x=2
+printf2: x=1

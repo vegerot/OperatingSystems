@@ -1,0 +1,4 @@
+Parent process with pid = 5229, and Parent pid = 1051
+Parent exiting now
+Child process with pid = 5230, and Parent pid = 1
+After sleeping. Child process with pid = 5230, and Parent pid = 1

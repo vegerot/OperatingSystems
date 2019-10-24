@@ -1,0 +1,6 @@
+$ locate sched.h|xargs grep "task_struct" -m 1
+/usr/src/linux-headers-5.0.0-27/include/linux/sched.h: * Define 'struct task_struct' and provide the main scheduler
+/usr/src/linux-headers-5.0.0-27/include/trace/events/sched.h:	TP_PROTO(struct task_struct *t),
+/usr/src/linux-headers-5.0.0-29/include/linux/sched.h: * Define 'struct task_struct' and provide the main scheduler
+/usr/src/linux-headers-5.0.0-29/include/trace/events/sched.h:	TP_PROTO(struct task_struct *t),
+

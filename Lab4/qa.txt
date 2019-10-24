@@ -1,0 +1,25 @@
+1. 
+2. If you run it in the background, the program will keep printing.  All "&" or "^Z;bg" does is push the job to the background but it continues to run and doesn't change the values of the file descriptors.  This doesn't have to do with our `pthread` call.  For example,  running `count&` (attached) will do the same thing.  And obviously ^c doesn't work  because that only references what bash is running in the foreground.  Running `kill %1` will stop the process
+3. It will quit the main thread, thus killing the two threads too.  This is a difference between pthread and fork.   If you did fork() instead of pthread, it would have continued past its parent's termination
+4. from `lldb`: 
+    (lldb) frame variable -T -s
+        LOCAL: (const int) N = 2
+        LOCAL: (int) i = 2
+        LOCAL: (pthread_t [2]) tid = {
+          (pthread_t) [0] = 0x0000700006443000
+          (pthread_t) [1] = 0x00007000064c6000
+        }
+        LOCAL: (char *[2]) msgs = {
+          (char *) [0] = 0x0000000100000f1e "Hello from foo"
+          (char *) [1] = 0x0000000100000f2d "Hello from bar"
+        }
+        STATIC: (int) cnt = 0
+        GLOBAL: (char **) ptr = 0x00007ffeefbfe6d0         
+5.
+    N:Heap
+    i: stack
+    pthread:stack
+    msgs:stack
+    cnt:stack
+    ptr:heap
+
